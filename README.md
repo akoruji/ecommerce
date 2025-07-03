@@ -10,39 +10,38 @@ This is a GitHub-ready Docker starter template for building an eCommerce site wi
 - Nginx (Alpine)
 - Docker Compose
 
-## 🚀 Getting Started
+# Laravel eCommerce Docker Starter (Fixed Structure)
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/yourname/ecommerce-app.git
-   cd ecommerce-app
-   ```
+## 🗂 Folder Structure
 
-2. Start Docker:
+- `/laravel` – Laravel project will be installed here
+- `/docker` – Nginx and other Docker configs
+- `Dockerfile`, `docker-compose.yml` – App container setup
+
+## 🚀 Quick Start
+
+1. Run:
    ```bash
    docker-compose up -d --build
-   ```
 
-3. Install Laravel dependencies:
-   ```bash
-   docker exec -it laravel_app bash
-   composer install
-   cp .env.example .env
-   php artisan key:generate
-   php artisan migrate
-   ```
+## Open the PHP container:
+docker exec -it laravel_app bash
+cd /var/www
+composer create-project laravel/laravel .
+cp .env.example .env
+php artisan key:generate
 
-4. Open your browser at: [http://localhost:8000](http://localhost:8000)
+## Edit .env and set DB settings:
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=ecommerce
+DB_USERNAME=laravel
+DB_PASSWORD=secret
 
-## 📁 Folder Structure
+## Run migrations:
+php artisan migrate
 
-- `Dockerfile` – PHP-FPM setup
-- `docker-compose.yml` – Multi-container setup
-- `docker/nginx/conf.d` – Nginx configuration
-
-## 🔒 Environment
-
-Update `.env` with your database credentials.
 
 ## 📦 Ready to Add
 
